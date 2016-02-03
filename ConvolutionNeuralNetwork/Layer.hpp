@@ -13,7 +13,7 @@
 #include <armadillo>
 #include "Supplement.hpp"
 #endif /* Layer_hpp */
-WDQWDQWDDW
+
 using namespace arma;
 using namespace std;
 
