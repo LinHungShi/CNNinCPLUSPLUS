@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E89385BD1BFCC9A70012FAAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385BC1BFCC9A70012FAAA /* main.cpp */; };
+		E89385C51BFCC9B90012FAAA /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C31BFCC9B90012FAAA /* Layer.cpp */; };
+		E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C91BFE20DD0012FAAA /* FullLayer.cpp */; };
+		E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385E81C01C6DA0012FAAA /* HidLayer.cpp */; };
+		E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385EB1C0226720012FAAA /* OutputLayer.cpp */; };
+		E89386061C02A45C0012FAAA /* Supplement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89386041C02A45C0012FAAA /* Supplement.cpp */; };
+		E89386091C031AA70012FAAA /* InputLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89386071C031AA70012FAAA /* InputLayer.cpp */; };
+		E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8F871571C5B5668009839BD /* NeuralNetwork.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +32,20 @@
 /* Begin PBXFileReference section */
 		E89385B91BFCC9A70012FAAA /* ConvolutionNeuralNetwork */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ConvolutionNeuralNetwork; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89385BC1BFCC9A70012FAAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E89385C31BFCC9B90012FAAA /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
+		E89385C41BFCC9B90012FAAA /* Layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
+		E89385C91BFE20DD0012FAAA /* FullLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FullLayer.cpp; sourceTree = "<group>"; };
+		E89385CA1BFE20DD0012FAAA /* FullLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FullLayer.hpp; sourceTree = "<group>"; };
+		E89385E81C01C6DA0012FAAA /* HidLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HidLayer.cpp; sourceTree = "<group>"; };
+		E89385E91C01C6DA0012FAAA /* HidLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HidLayer.hpp; sourceTree = "<group>"; };
+		E89385EB1C0226720012FAAA /* OutputLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutputLayer.cpp; sourceTree = "<group>"; };
+		E89385EC1C0226720012FAAA /* OutputLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutputLayer.hpp; sourceTree = "<group>"; };
+		E89386041C02A45C0012FAAA /* Supplement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Supplement.cpp; sourceTree = "<group>"; };
+		E89386051C02A45C0012FAAA /* Supplement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Supplement.hpp; sourceTree = "<group>"; };
+		E89386071C031AA70012FAAA /* InputLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputLayer.cpp; sourceTree = "<group>"; };
+		E89386081C031AA70012FAAA /* InputLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InputLayer.hpp; sourceTree = "<group>"; };
+		E8F871571C5B5668009839BD /* NeuralNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NeuralNetwork.cpp; sourceTree = "<group>"; };
+		E8F871581C5B5668009839BD /* NeuralNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NeuralNetwork.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +79,20 @@
 			isa = PBXGroup;
 			children = (
 				E89385BC1BFCC9A70012FAAA /* main.cpp */,
+				E8F871571C5B5668009839BD /* NeuralNetwork.cpp */,
+				E8F871581C5B5668009839BD /* NeuralNetwork.hpp */,
+				E89385C31BFCC9B90012FAAA /* Layer.cpp */,
+				E89385C41BFCC9B90012FAAA /* Layer.hpp */,
+				E89386041C02A45C0012FAAA /* Supplement.cpp */,
+				E89386051C02A45C0012FAAA /* Supplement.hpp */,
+				E89385C91BFE20DD0012FAAA /* FullLayer.cpp */,
+				E89385CA1BFE20DD0012FAAA /* FullLayer.hpp */,
+				E89386071C031AA70012FAAA /* InputLayer.cpp */,
+				E89386081C031AA70012FAAA /* InputLayer.hpp */,
+				E89385E81C01C6DA0012FAAA /* HidLayer.cpp */,
+				E89385E91C01C6DA0012FAAA /* HidLayer.hpp */,
+				E89385EB1C0226720012FAAA /* OutputLayer.cpp */,
+				E89385EC1C0226720012FAAA /* OutputLayer.hpp */,
 			);
 			path = ConvolutionNeuralNetwork;
 			sourceTree = "<group>";
@@ -119,6 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E89385BD1BFCC9A70012FAAA /* main.cpp in Sources */,
+				E89385C51BFCC9B90012FAAA /* Layer.cpp in Sources */,
+				E89386061C02A45C0012FAAA /* Supplement.cpp in Sources */,
+				E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */,
+				E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */,
+				E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */,
+				E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */,
+				E89386091C031AA70012FAAA /* InputLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,9 +203,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = /usr/local/include;
+				"LD_MAP_FILE_PATH[arch=*]" = "$(TARGET_TEMP_DIR)/$(PRODUCT_NAME)-LinkMap-$(CURRENT_VARIANT)-$(CURRENT_ARCH).txt";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-larmadillo";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -198,8 +244,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				"OTHER_LDFLAGS[arch=*]" = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -237,6 +285,7 @@
 				E89385C21BFCC9A70012FAAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
