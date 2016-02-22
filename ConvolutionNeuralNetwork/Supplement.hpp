@@ -11,12 +11,20 @@
 
 #include <stdio.h>
 #include <armadillo>
+#include "HidLayer.hpp"
+#include "OutputLayer.hpp"
 using namespace arma;
 using namespace std;
-#endif /* Supplement_hpp */
 
-mat actNeuron(mat pre_act, string actfun, string l_name);
-mat diffAct(mat pre_act, string actfun);
-mat initWeight(int row, int col, string init_method);
-double computeError(mat y, mat predict);
-double errorRate(mat y, mat predict);
+void UpdateHidLayerParm(FullLayer &layer,
+                      mat next_layer_delta,
+                      mat n_layer_weight,
+                      double alpha,
+                      mat input);
+
+void UpdateOutputLayerParm(FullLayer &layer,
+                           mat y,
+                           mat input,
+                           double alpha,
+                           string err_func);
+#endif /* Supplement_hpp */

@@ -5,14 +5,12 @@
 //  Created by Lin Hung-Shi on 11/18/15.
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
-#pragma once
+
 #ifndef Layer_hpp
 #define Layer_hpp
 
 #include <stdio.h>
 #include <armadillo>
-#include "Supplement.hpp"
-#endif /* Layer_hpp */
 
 using namespace arma;
 using namespace std;
@@ -22,16 +20,28 @@ class Layer{
     
 protected:
     
-    void updateW(double alpha){weight = weight - alpha * grad;}
+    void UpdateWeight(double alpha)
+    {
+        
+        weight_ = weight_ - alpha * gradient_;
     
-    
+    }
+   
 public:
     
-    string actfun, name;
-    mat input, output, delta, grad, weight;
-    Layer(mat value, string var_name);
-    Layer(int inp_size, int nn, string init_method, string actfun, string name);
+    string act_func_, name_, num_neuron_;
+    mat output_, delta_, gradient_, weight_;
+
+    Layer(int input_size,
+          int num_neuron,
+          string init_method,
+          string act_func,
+          string name);
     
-    virtual bool updateValue(mat input)=0;
-    
+    void InitWeight(int row,
+                    int col,
+                    string init_method);
+ 
 };
+
+#endif /* Layer_hpp */

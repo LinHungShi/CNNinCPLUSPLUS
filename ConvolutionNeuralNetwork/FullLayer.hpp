@@ -11,35 +11,28 @@
 
 #include <stdio.h>
 #include "Layer.hpp"
-
+#include "ActFuncOp.hpp"
 
 class FullLayer : public Layer{
     
 protected:
     
-    int num_neuron;
-    bool updateInput(mat &input);
-    bool updateOutput();
-    bool updateWGrad();
+    int num_neuron_;
+    bool UpdateWeightGradient(mat input);
 
 public:
     
-    bool updateValue(mat input);
+    virtual bool UpdateOutput(mat input)=0;
     
-    FullLayer(int nn, mat weight):
-                                num_neuron(nn),
-                                Layer(weight, "weight"){}
-    
-    FullLayer(int inp_size, int nn, string init_method, string actfun, string name):
-                                num_neuron(nn),
-                                Layer(inp_size, nn,init_method, actfun, name){}
-    
-    virtual bool updatePar(double alpha,
-                                mat y = randn<mat>(1,1),
-                                mat n_delta = randn<mat>(1,1),
-                                mat n_weight = randn<mat>(1,1)){return true;}
-    
-    
+    FullLayer(int input_size,
+              int num_neuron,
+              string init_method,
+              string act_func,
+              string name):Layer(input_size,
+                                 num_neuron,
+                                 init_method,
+                                 act_func,
+                                 name){}
     
 };
 

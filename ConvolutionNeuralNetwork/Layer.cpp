@@ -10,15 +10,30 @@
 #include "Layer.hpp"
 
 
-Layer::Layer(int inp_size, int nn, string init_method, string actfun, string var_name){
-    this->weight = initWeight(inp_size, nn, init_method);
-    this->actfun = actfun;
-    this->name = var_name;
+Layer::Layer(int input_size,
+             int num_neuron,
+             string init_method,
+             string act_func,
+             string var_name)
+{
+    
+    num_neuron_ = num_neuron;
+    InitWeight(input_size, num_neuron, init_method);
+    act_func_ = act_func;
+    name_ = var_name;
+
 }
-Layer::Layer(mat value, string var_name){
-    if(var_name =="weight")
-        weight = value;
-    else if(var_name == "input"){
-        this -> input = value;
+
+
+void Layer::InitWeight(int row, int col, string init_method)
+{
+    
+    if(init_method == "randn")
+    {
+        
+        this -> weight_ = mat(row, col, fill::randn);
+    
     }
+    
 }
+

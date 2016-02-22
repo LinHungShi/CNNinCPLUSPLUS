@@ -10,25 +10,44 @@
 #define NeuralNetwork_hpp
 
 #include <stdio.h>
-#include "OutputLayer.hpp"
-#include "HidLayer.hpp"
-#endif /* NeuralNetwork_hpp */
+#include "Supplement.hpp"
+
 
 class NeuronNet{
 
 private:
-    void feedForward();
-    void backProp();
-    vector<FullLayer*> layers;
-    mat input;
-    mat y;
-    mat output;
-    double alpha;
-    int epoch;
-    string init_method;
+    
+    void FeedForward();
+    void BackProp();
+    vector<FullLayer*> layers_;
+    mat input_, y_, output_;
+    double alpha_;
+    int epoch_;
+    string init_method_, err_func_;
+    
 public:
-    NeuronNet(mat input, mat y, vector<int> nn, double alpha,  string actfun, string outfun, string init_method, int batch = 1, int epoch = 3);
-    void trainNN();
-    mat getOutput(){return this->output;}
+    
+    NeuronNet(mat input,
+              mat y,
+              vector<int> num_neuron,
+              double alpha,
+              string act_func,
+              string out_func,
+              string err_func,
+              string init_method,
+              int batch = 1,
+              int epoch = 3);
+    
+    void AddLayer(FullLayer &layer);
+    void InsertLayer(FullLayer &layer, int index);
+    void DeleteLayer(int index);
+    
+    string CheckNNComplete();
+    string CheckDimCompat();
+    bool StopNN(string message);
+    void TrainNN();
+    mat get_output_(){return output_;}
+    
     
 };
+#endif /* NeuralNetwork_hpp */

@@ -11,18 +11,32 @@
 
 #include <stdio.h>
 #include "FullLayer.hpp"
-#endif /* HidLayer_hpp */
+
 
 class HidLayer : public FullLayer{
 
 protected:
-    bool updateDelta(mat n_delta, mat n_weight);
     
+    bool UpdateDelta(mat next_layer_delta, mat next_layer_weight);
 public:
-    HidLayer(int nn, mat w): FullLayer(nn, w){}
-    HidLayer(int inp_dim, int nn, string init_method, string actfun, string name):FullLayer(inp_dim, nn, init_method, actfun, name){}
-    bool updatePar(double alpha, mat y = randn<mat>(1,1), mat n_delta = randn<mat>(1,1), mat n_weight = randn<mat>(1,1));
+    
+    HidLayer(int input_dim,
+             int num_neuron,
+             string init_method,
+             string act_func,
+             string name):FullLayer(input_dim,
+                                    num_neuron,
+                                    init_method,
+                                    act_func,
+                                    name){}
+
+    bool UpdateParm(double alpha,
+                    mat next_layer_delta,
+                    mat next_layer_weight,
+                    mat input);
+    
+    bool UpdateOutput(mat input);
 };
 
-
+#endif /* HidLayer_hpp */
 

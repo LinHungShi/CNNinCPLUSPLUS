@@ -16,20 +16,27 @@
 //    return true;
 //}
 
-bool OutputLayer::updatePar(double alpha, mat y, mat n_delta, mat n_weight){
+bool OutputLayer::UpdateParm(double alpha,
+                             mat y,
+                             mat input,
+                             string err_func)
+{
 
-    updateDelta(y);
-    updateWGrad();
-    //cout << weight << endl;
-    updateW(alpha);
-    //cout << weight << endl;
+    UpdateDelta(y, err_func);
+    UpdateWeightGradient(input);
+    UpdateWeight(alpha);
     return true;
 }
 
-bool OutputLayer::updateDelta(mat y){
+bool OutputLayer::UpdateDelta(mat y, string err_func){
+    
+    delta_ = DDiffErrFunc(output_, y, err_func);
+    return true;
+}
 
-    if(actfun == "softmax"){
-        delta = output - y;
-    }
+bool OutputLayer::UpdateOutput(mat input){
+    
+    mat pre_act = input * weight_;
+    output_ = DComputeOutputFunc(pre_act, act_func_);
     return true;
 }

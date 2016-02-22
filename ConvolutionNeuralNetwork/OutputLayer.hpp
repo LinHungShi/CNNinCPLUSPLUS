@@ -11,19 +11,32 @@
 
 #include <stdio.h>
 #include "FullLayer.hpp"
-#endif /* OutputLayer_hpp */
+
 
 class OutputLayer : public FullLayer{
   
 
 private:
-    bool updateDelta(mat y);
     
-protected:
+    bool UpdateDelta(mat y, string err_func);
     
 public:
-    OutputLayer(int nn, mat w): FullLayer(nn, w){}
-    OutputLayer(int nn, int col, string init_method, string actfun, string name):FullLayer(nn, col, init_method, actfun, name){}
-    bool updatePar(double alpha, mat y = randn<mat>(1,1), mat n_delta = randn<mat>(1,1), mat n_weight = randn<mat>(1,1));
+
+    OutputLayer(int num_neuron,
+                int col,
+                string init_method,
+                string act_func,
+                string name):FullLayer(num_neuron,
+                                       col,
+                                       init_method,
+                                       act_func,
+                                       name){}
+    bool UpdateParm(double alpha,
+                   mat y,
+                   mat input,
+                   string err_func);
+    
+    bool UpdateOutput(mat input);
 
 };
+#endif /* OutputLayer_hpp */
