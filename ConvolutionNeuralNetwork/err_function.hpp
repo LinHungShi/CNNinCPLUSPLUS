@@ -14,7 +14,7 @@
 #include <armadillo>
 #include <functional>
 #include "ActFuncOp.hpp"
-#include "output_function.hpp"
+#include "output_act_function.hpp"
 
 using namespace std;
 using namespace arma;
@@ -24,17 +24,15 @@ class ErrFunction{
 public:
 
     string err_func_name_;
-    string diff_err_func_name_;
+
     
     function<double(mat)> custom_err_func;
-    function<mat(mat, OutputFunction*)> custom_diff_err_func;
+    function<mat(mat, mat, OutputFunction*)> custom_diff_err_func;
     
-    ErrFunction(string default_err_func_name,
-                string default_diff_err_func_name):err_func_name_(default_err_func_name),
-                                                   diff_err_func_name_(default_diff_err_func_name){};
-    
+    ErrFunction(string default_err_func_name):err_func_name_(default_err_func_name){};
+                
     ErrFunction(function<double(mat)>default_err_func_,
-                function<mat(mat, OutputFunction*)>default_diff_err_func_):custom_err_func(default_err_func_),
+                function<mat(mat, mat, OutputFunction*)>default_diff_err_func_):custom_err_func(default_err_func_),
                                                           custom_diff_err_func(default_diff_err_func_){};
     
     double ComputeErrFunc(mat const, mat const);

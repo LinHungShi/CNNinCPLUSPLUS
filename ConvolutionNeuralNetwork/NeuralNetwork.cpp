@@ -11,7 +11,7 @@
 
 
 
-NeuronNet::NeuronNet(mat input,
+/*NeuronNet::NeuronNet(mat input,
                      mat y,
                      vector<int> num_neuron,
                      double alpha,
@@ -46,14 +46,88 @@ NeuronNet::NeuronNet(mat input,
     layers_.push_back(outlayer);
     
 }
+*/
+
+
+void NeuronNet::InsertLayer(FullLayer &layer)
+{
+
+    layers_.push_back(&layer);
+    
+}
+
+void NeuronNet::InsertLayer(FullLayer &layer, int index)
+{
+    
+    layers_.insert(layers_.begin() + index, &layer);
+
+}
+
+void NeuronNet::DeleteFirstLayer()
+{
+    
+    layers_.erase(layers_.begin());
+    
+}
+
+void NeuronNet::DeleteLastLayer()
+{
+    layers_.erase(layers_.end());
+    
+}
+
+void NeuronNet::DeleteLayer(int index)
+{
+    
+    layers_.erase(layers_.begin() + index);
+    
+}
+
+void NeuronNet::ClearLayers()
+{
+    
+    layers_.clear();
+    
+}
+
+bool NeuronNet::IsLayersEmpty()
+{
+
+    return layers_.empty();
+
+}
+
+int NeuronNet::GetLayersSize()
+{
+    
+    return (int)layers_.size();
+
+
+}
+
+bool NeuronNet::CheckNNComplete(){
+    
+    if( (dynamic_cast<HidLayer*>(layers_[0])) && (dynamic_cast<OutputLayer*>(layers_.back())))
+       {
+           
+           return true;
+    
+       }
+       
+       return false;
+}
+
+
 
 
 void NeuronNet::FeedForward()
 {
     
     mat x = input_;
-    
-    for(vector<FullLayer*>::iterator it = layers_.begin();it != layers_.end();++it){
+    for(vector<FullLayer*>::iterator it = layers_.begin();it != layers_.end();++it)
+    {
+        
+        
         (*it)->UpdateOutput(x);
         x = (*it)->output_;
         
@@ -65,10 +139,9 @@ void NeuronNet::FeedForward()
 
 void NeuronNet::BackProp()
 {
-    
+
     int output_index = (int)(layers_.size()-1);
     mat input = layers_[output_index - 1]->output_;
-    
     UpdateOutputLayerParm(*layers_[output_index], y_, input, alpha_, err_func_);
     
     
@@ -89,7 +162,34 @@ void NeuronNet::BackProp()
     
 }
 
-void NeuronNet::TrainNN(){
+void NeuronNet::InitAllLayerWeight(bool update_all)
+{
+ 
+    int inp_dim = (int)input_.n_cols;
+    
+    for (vector<FullLayer*>::iterator it=layers_.begin(); it!=layers_.end(); it++)
+    {
+        if((**it).has_w_init_func_ == true)
+        {
+        
+            InitWeightFunction temp = *(**it).w_init_func_;
+            (*it)->w_init_func_ = w_init_func_;
+            (*it)->InitWeight(inp_dim);
+            (**it).w_init_func_ = &temp;
+            inp_dim = (*it)->num_neuron_;
+        
+        }
+        
+        (*it)->w_init_func_ = w_init_func_;
+        (*it)->InitWeight(inp_dim);
+        inp_dim = (*it)->num_neuron_;
+        
+    }
+    
+}
+
+void NeuronNet::TrainNN()
+{
 
     double error;
     for (int i = 1; i <= epoch_; i++)
@@ -97,8 +197,53 @@ void NeuronNet::TrainNN(){
         
         FeedForward();
         BackProp();
-        error = DComputeErrFunc(y_, output_, err_func_);
+        error = err_func_.ComputeErrFunc(output_, y_);
         cout << "error is:" << error << endl;
+        if(error < 0.01)
+            break;
     }
+    cout << output_;
+}
+
+ostream &operator<<(ostream &stream, NeuronNet &nnet)
+{
+
+    int width = 5;
+    stream << "Neural Net..." << endl;
+    stream << "Epoch: " << setw(width) << nnet.epoch_ << endl;
+    stream << "Learning Rate: " << nnet.alpha_ << endl;
+    stream << "Number of Layers: " << nnet.layers_.size() << endl;
+    if(nnet.has_w_init_func_)
+    {
+    
+        stream << "All Layer Weight Initialization Method: " << setw(width) << nnet.w_init_func_->init_method_name_ << endl;
+    
+    }
+    else
+    {
+        
+        stream << "All Layer Weight Initialization Method: " << setw(width) << "None" << endl;
+        
+    }
+    
+    stream << "All layers' information are printed..." << endl;
+    stream << PrintSepLine() << endl;
+    vector<FullLayer*>::iterator it=nnet.layers_.begin();
+    int num = 0;
+    
+    for(;it!=nnet.layers_.end()-1;++it)
+    {
+        
+        stream << "Layer: " << setw(width) << num << endl;
+        HidLayer* hid_layer = dynamic_cast<HidLayer*>(*it);
+        stream << *hid_layer << endl;
+        ++num;
+        
+    }
+    stream << "Output Layer: " << endl;
+    OutputLayer *output_layer = dynamic_cast<OutputLayer*>(nnet.layers_[num]);
+    stream << *output_layer << endl;
+    return stream;
+
 }
 

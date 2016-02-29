@@ -12,29 +12,48 @@
 #include <stdio.h>
 #include "Layer.hpp"
 #include "ActFuncOp.hpp"
+#include "init_weight_function.hpp"
+#include "line_print_func.hpp"
 
 class FullLayer : public Layer{
     
 protected:
     
-    int num_neuron_;
     bool UpdateWeightGradient(mat input);
 
 public:
     
+    mat weight_, gradient_;
+    bool is_weight_init_;
+    InitWeightFunction *w_init_func_;
+    bool has_w_init_func_;
+    
     virtual bool UpdateOutput(mat input)=0;
     
-    FullLayer(int input_size,
-              int num_neuron,
-              string init_method,
-              string act_func,
-              string name):Layer(input_size,
-                                 num_neuron,
-                                 init_method,
-                                 act_func,
-                                 name){}
+    FullLayer(int num_neuron,
+              string name):Layer(num_neuron, name), is_weight_init_(false), has_w_init_func_(false){};
     
+    
+    
+    void InitWeight(int inp_dim);
+    
+    void set_w_init_func_(InitWeightFunction w_init_func)
+    {
+        
+        w_init_func_ = &w_init_func;
+        has_w_init_func_ = true;
+    
+    }
+    
+    void UpdateWeight(double alpha)
+    {
+        
+        weight_ = weight_ - alpha * gradient_;
+        
+    }
 };
+
+
 
 #endif /* FullLayer_hpp */
 

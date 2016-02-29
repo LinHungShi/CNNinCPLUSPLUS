@@ -148,7 +148,12 @@ mat DComputeOutputFunc(mat pre_act, string output_func){
     return act;
 }
 
-mat DDiffOutputFunc(mat pre_act, string output_func);
+mat DDiffOutputFunc(mat pre_act, string output_func)
+{
+    cout << "No default differentiation of output function, return pre-activation function" << endl;
+    return pre_act;
+    
+}
 
 double DComputeErrFunc(mat y, mat pred, string err_func){
     

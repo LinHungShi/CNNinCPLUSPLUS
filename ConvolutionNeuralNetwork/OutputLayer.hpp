@@ -11,32 +11,35 @@
 
 #include <stdio.h>
 #include "FullLayer.hpp"
-
+#include "err_function.hpp"
+#include <iostream>
+#include <iomanip>
 
 class OutputLayer : public FullLayer{
   
 
 private:
     
-    bool UpdateDelta(mat y, string err_func);
+    bool UpdateDelta(mat y, ErrFunction &err_func);
     
 public:
 
+    OutputFunction output_func_;
+    
     OutputLayer(int num_neuron,
-                int col,
-                string init_method,
-                string act_func,
-                string name):FullLayer(num_neuron,
-                                       col,
-                                       init_method,
-                                       act_func,
-                                       name){}
+                OutputFunction output_func):output_func_(output_func),
+                                            FullLayer(
+                                            num_neuron,
+                                            "OutputLayer"){};
     bool UpdateParm(double alpha,
                    mat y,
                    mat input,
-                   string err_func);
+                   ErrFunction &err_func);
     
     bool UpdateOutput(mat input);
-
+    
+    void set_output_func_(OutputFunction &output_func){output_func_ = output_func;}
+    
+    friend ostream &operator<<(ostream &stream, OutputLayer &layer);
 };
 #endif /* OutputLayer_hpp */

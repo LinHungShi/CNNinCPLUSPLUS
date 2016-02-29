@@ -17,3 +17,12 @@ bool FullLayer::UpdateWeightGradient(mat input)
 }
 
 
+void FullLayer::InitWeight(int inp_dim)
+{
+    
+    //cout << "inp_dim: " << inp_dim << endl;
+    //cout << "num_neuron: " << num_neuron_ << endl;
+    
+    weight_ = (*w_init_func_)(inp_dim, num_neuron_);
+    
+}

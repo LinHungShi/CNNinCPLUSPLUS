@@ -31,10 +31,10 @@ mat  ErrFunction::DiffErrFunc(const mat pred,
     if (err_func_name_ == "self-made")
     {
         
-        return custom_diff_err_func(pred, output_func);
+        return custom_diff_err_func(pred, y, output_func);
         
     }
     
-    return DDiffErrFunc(y, pred, diff_err_func_name_);
+    return DDiffErrFunc(pred, y, err_func_name_);
     
 }

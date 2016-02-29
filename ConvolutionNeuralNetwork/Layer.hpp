@@ -17,30 +17,11 @@ using namespace std;
 
 
 class Layer{
-    
-protected:
-    
-    void UpdateWeight(double alpha)
-    {
-        
-        weight_ = weight_ - alpha * gradient_;
-    
-    }
-   
-public:
-    
-    string act_func_, name_, num_neuron_;
-    mat output_, delta_, gradient_, weight_;
-
-    Layer(int input_size,
-          int num_neuron,
-          string init_method,
-          string act_func,
-          string name);
-    
-    void InitWeight(int row,
-                    int col,
-                    string init_method);
+ public:
+  string name_;
+  int num_neuron_;
+  mat output_, delta_;
+    Layer(int num_neuron, string name):num_neuron_(num_neuron), name_(name){};
  
 };
 

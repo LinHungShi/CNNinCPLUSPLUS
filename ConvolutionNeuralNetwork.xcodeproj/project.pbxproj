@@ -8,15 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		E89177AC1C72A09D002E0319 /* ActFuncOp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177AA1C72A09D002E0319 /* ActFuncOp.cpp */; };
-		E89177B21C79E92A002E0319 /* act_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177B01C79E92A002E0319 /* act_function.cpp */; };
+		E89177B21C79E92A002E0319 /* hidden_act_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177B01C79E92A002E0319 /* hidden_act_function.cpp */; };
 		E89177B51C7A1697002E0319 /* err_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177B31C7A1697002E0319 /* err_function.cpp */; };
-		E89177B81C7A2A21002E0319 /* output_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177B61C7A2A21002E0319 /* output_function.cpp */; };
+		E89177B81C7A2A21002E0319 /* output_act_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177B61C7A2A21002E0319 /* output_act_function.cpp */; };
+		E89177D11C7AF6A6002E0319 /* act_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177CF1C7AF6A6002E0319 /* act_function.cpp */; };
+		E89177DA1C7C47A4002E0319 /* init_weight_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177D81C7C47A4002E0319 /* init_weight_function.cpp */; };
+		E89177DD1C7C4C65002E0319 /* default_weight_init_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177DB1C7C4C65002E0319 /* default_weight_init_funcs.cpp */; };
 		E89385BD1BFCC9A70012FAAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385BC1BFCC9A70012FAAA /* main.cpp */; };
 		E89385C51BFCC9B90012FAAA /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C31BFCC9B90012FAAA /* Layer.cpp */; };
 		E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C91BFE20DD0012FAAA /* FullLayer.cpp */; };
 		E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385E81C01C6DA0012FAAA /* HidLayer.cpp */; };
 		E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385EB1C0226720012FAAA /* OutputLayer.cpp */; };
 		E89386061C02A45C0012FAAA /* Supplement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89386041C02A45C0012FAAA /* Supplement.cpp */; };
+		E89EB2CA1C7EE4560050D50C /* line_print_func.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89EB2C81C7EE4560050D50C /* line_print_func.cpp */; };
 		E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8F871571C5B5668009839BD /* NeuralNetwork.cpp */; };
 /* End PBXBuildFile section */
 
@@ -35,12 +39,18 @@
 /* Begin PBXFileReference section */
 		E89177AA1C72A09D002E0319 /* ActFuncOp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActFuncOp.cpp; sourceTree = "<group>"; };
 		E89177AB1C72A09D002E0319 /* ActFuncOp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ActFuncOp.hpp; sourceTree = "<group>"; };
-		E89177B01C79E92A002E0319 /* act_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = act_function.cpp; path = ../act_function.cpp; sourceTree = "<group>"; };
-		E89177B11C79E92A002E0319 /* act_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = act_function.hpp; path = ../act_function.hpp; sourceTree = "<group>"; };
+		E89177B01C79E92A002E0319 /* hidden_act_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hidden_act_function.cpp; path = ../hidden_act_function.cpp; sourceTree = "<group>"; };
+		E89177B11C79E92A002E0319 /* hidden_act_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hidden_act_function.hpp; path = ../hidden_act_function.hpp; sourceTree = "<group>"; };
 		E89177B31C7A1697002E0319 /* err_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = err_function.cpp; sourceTree = "<group>"; };
 		E89177B41C7A1697002E0319 /* err_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = err_function.hpp; sourceTree = "<group>"; };
-		E89177B61C7A2A21002E0319 /* output_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = output_function.cpp; sourceTree = "<group>"; };
-		E89177B71C7A2A21002E0319 /* output_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = output_function.hpp; sourceTree = "<group>"; };
+		E89177B61C7A2A21002E0319 /* output_act_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = output_act_function.cpp; sourceTree = "<group>"; };
+		E89177B71C7A2A21002E0319 /* output_act_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = output_act_function.hpp; sourceTree = "<group>"; };
+		E89177CF1C7AF6A6002E0319 /* act_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = act_function.cpp; path = ../act_function.cpp; sourceTree = "<group>"; };
+		E89177D01C7AF6A6002E0319 /* act_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = act_function.hpp; path = ../act_function.hpp; sourceTree = "<group>"; };
+		E89177D81C7C47A4002E0319 /* init_weight_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = init_weight_function.cpp; path = ../init_weight_function.cpp; sourceTree = "<group>"; };
+		E89177D91C7C47A4002E0319 /* init_weight_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = init_weight_function.hpp; path = ../init_weight_function.hpp; sourceTree = "<group>"; };
+		E89177DB1C7C4C65002E0319 /* default_weight_init_funcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = default_weight_init_funcs.cpp; sourceTree = "<group>"; };
+		E89177DC1C7C4C65002E0319 /* default_weight_init_funcs.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = default_weight_init_funcs.hpp; sourceTree = "<group>"; };
 		E89385B91BFCC9A70012FAAA /* ConvolutionNeuralNetwork */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ConvolutionNeuralNetwork; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89385BC1BFCC9A70012FAAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E89385C31BFCC9B90012FAAA /* Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
@@ -53,6 +63,8 @@
 		E89385EC1C0226720012FAAA /* OutputLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutputLayer.hpp; sourceTree = "<group>"; };
 		E89386041C02A45C0012FAAA /* Supplement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Supplement.cpp; sourceTree = "<group>"; };
 		E89386051C02A45C0012FAAA /* Supplement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Supplement.hpp; sourceTree = "<group>"; };
+		E89EB2C81C7EE4560050D50C /* line_print_func.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = line_print_func.cpp; sourceTree = "<group>"; };
+		E89EB2C91C7EE4560050D50C /* line_print_func.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = line_print_func.hpp; sourceTree = "<group>"; };
 		E8F871571C5B5668009839BD /* NeuralNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NeuralNetwork.cpp; sourceTree = "<group>"; };
 		E8F871581C5B5668009839BD /* NeuralNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NeuralNetwork.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,18 +108,26 @@
 				E89177AB1C72A09D002E0319 /* ActFuncOp.hpp */,
 				E89386041C02A45C0012FAAA /* Supplement.cpp */,
 				E89386051C02A45C0012FAAA /* Supplement.hpp */,
+				E89EB2C81C7EE4560050D50C /* line_print_func.cpp */,
+				E89EB2C91C7EE4560050D50C /* line_print_func.hpp */,
 				E89385C91BFE20DD0012FAAA /* FullLayer.cpp */,
 				E89385CA1BFE20DD0012FAAA /* FullLayer.hpp */,
 				E89385E81C01C6DA0012FAAA /* HidLayer.cpp */,
 				E89385E91C01C6DA0012FAAA /* HidLayer.hpp */,
-				E89177B01C79E92A002E0319 /* act_function.cpp */,
-				E89177B11C79E92A002E0319 /* act_function.hpp */,
+				E89177CF1C7AF6A6002E0319 /* act_function.cpp */,
+				E89177D01C7AF6A6002E0319 /* act_function.hpp */,
+				E89177B01C79E92A002E0319 /* hidden_act_function.cpp */,
+				E89177B11C79E92A002E0319 /* hidden_act_function.hpp */,
+				E89177B61C7A2A21002E0319 /* output_act_function.cpp */,
+				E89177B71C7A2A21002E0319 /* output_act_function.hpp */,
 				E89177B31C7A1697002E0319 /* err_function.cpp */,
 				E89177B41C7A1697002E0319 /* err_function.hpp */,
-				E89177B61C7A2A21002E0319 /* output_function.cpp */,
-				E89177B71C7A2A21002E0319 /* output_function.hpp */,
 				E89385EB1C0226720012FAAA /* OutputLayer.cpp */,
 				E89385EC1C0226720012FAAA /* OutputLayer.hpp */,
+				E89177D81C7C47A4002E0319 /* init_weight_function.cpp */,
+				E89177D91C7C47A4002E0319 /* init_weight_function.hpp */,
+				E89177DB1C7C4C65002E0319 /* default_weight_init_funcs.cpp */,
+				E89177DC1C7C4C65002E0319 /* default_weight_init_funcs.hpp */,
 			);
 			path = ConvolutionNeuralNetwork;
 			sourceTree = "<group>";
@@ -170,14 +190,18 @@
 			files = (
 				E89385BD1BFCC9A70012FAAA /* main.cpp in Sources */,
 				E89177AC1C72A09D002E0319 /* ActFuncOp.cpp in Sources */,
+				E89177D11C7AF6A6002E0319 /* act_function.cpp in Sources */,
 				E89385C51BFCC9B90012FAAA /* Layer.cpp in Sources */,
 				E89177B51C7A1697002E0319 /* err_function.cpp in Sources */,
-				E89177B21C79E92A002E0319 /* act_function.cpp in Sources */,
+				E89177DD1C7C4C65002E0319 /* default_weight_init_funcs.cpp in Sources */,
+				E89177DA1C7C47A4002E0319 /* init_weight_function.cpp in Sources */,
+				E89177B21C79E92A002E0319 /* hidden_act_function.cpp in Sources */,
 				E89386061C02A45C0012FAAA /* Supplement.cpp in Sources */,
-				E89177B81C7A2A21002E0319 /* output_function.cpp in Sources */,
+				E89177B81C7A2A21002E0319 /* output_act_function.cpp in Sources */,
 				E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */,
 				E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */,
 				E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */,
+				E89EB2CA1C7EE4560050D50C /* line_print_func.cpp in Sources */,
 				E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,7 +23,7 @@ void UpdateOutputLayerParm(FullLayer &layer,
                            mat y,
                            mat input,
                            double alpha,
-                           string err_func){
+                           ErrFunction &err_func){
     
     OutputLayer &out = static_cast<OutputLayer&>(layer);
     out.UpdateParm(alpha, y, input, err_func);

@@ -1,9 +1,9 @@
 //
-//  act_function.cpp
+//  line_print_func.cpp
 //  ConvolutionNeuralNetwork
 //
-//  Created by Lin Hung-Shi on 2/22/16.
+//  Created by Lin Hung-Shi on 2/25/16.
 //  Copyright © 2016 Lin Hung-Shi. All rights reserved.
 //
 
-#include "act_function.hpp"
+#include "line_print_func.hpp"

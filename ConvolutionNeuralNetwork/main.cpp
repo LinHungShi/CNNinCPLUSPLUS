@@ -24,11 +24,30 @@ int main(int argc, const char * argv[]) {
     y.submat(500, 1, 999, 1) = ones<colvec>(num_obs/2);
     //cout << "y" << y <<endl;
     vector<int> nn{150,100};
+    int classes = 2;
     string actfun = "tanh";
     string outfun = "softmax";
     string init_method = "randn";
-    string errfunc = "crossentropy";
+    //string errfunc = "crossentropy";
     int epoch = 1000;
-    NeuronNet Nnet(input, y, nn, alpha, actfun, outfun, errfunc, init_method, num_obs, epoch);
-    Nnet.TrainNN();
-    }
+    
+    
+    HidActFunction hidact("tanh");
+    auto tanh = [](mat pre_act)->mat{return 1/(1 + exp(-pre_act));};
+    auto diff_tanh = [](mat act)->mat{return 1 - pow(act, 2);};
+    HidActFunction hid_act_tanh(tanh, diff_tanh);
+    HidLayer hidlayer(nn[0], hid_act_tanh);
+    HidLayer hidlayer2(nn[1], hidact);
+    OutputFunction outact("softmax");
+    OutputLayer outlayer(classes, outact);
+    ErrFunction errfunc("crossentropy");
+    NeuronNet NN(input, y, errfunc, alpha, epoch, "randn");
+    InitWeightFunction *w_init_func = new InitWeightFunction(init_method);
+    NN.set_w_init_func_(w_init_func);
+    NN.InsertLayer(hidlayer);
+    NN.InsertLayer(hidlayer2);
+    NN.InsertLayer(outlayer);
+    NN.InitAllLayerWeight(true);
+    cout << NN << endl;
+    NN.TrainNN();
+}
