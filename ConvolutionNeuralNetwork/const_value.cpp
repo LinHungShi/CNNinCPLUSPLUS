@@ -1,9 +1,13 @@
 //
-//  line_print_func.cpp
+//  const_value.cpp
 //  ConvolutionNeuralNetwork
 //
-//  Created by Lin Hung-Shi on 2/25/16.
+//  Created by Lin Hung-Shi on 3/1/16.
 //  Copyright © 2016 Lin Hung-Shi. All rights reserved.
 //
 
-#include "line_print_func.hpp"
+#include "const_value.hpp"
+
+
+
+

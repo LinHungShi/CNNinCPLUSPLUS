@@ -10,31 +10,19 @@
 
 
 
-double  ErrFunction::ComputeErrFunc(const mat pred, mat const y){
-    
-    if (err_func_name_ == "self-made")
+double  ErrFunction::ComputeErrFunc(mat const &pred, mat const &y) const {
+  if (func_name_ == kUserDefinedMethod)
     {
-        
-        return custom_err_func(pred);
-        
+        return custom_func_(pred);
     }
-    
-    return DComputeErrFunc(y, pred, err_func_name_);
-    
+  return DComputeErrFunc(y, pred, func_name_);
 }
 
 
-mat  ErrFunction::DiffErrFunc(const mat pred,
-                              mat const y,
-                              OutputFunction* output_func){
-    
-    if (err_func_name_ == "self-made")
+mat  ErrFunction::DiffErrFunc(mat const &pred, mat const &y, ActFunction const &output_func) const {
+  if (func_name_ == kUserDefinedMethod)
     {
-        
-        return custom_diff_err_func(pred, y, output_func);
-        
+        return custom_diff_func_(pred, y, output_func);
     }
-    
-    return DDiffErrFunc(pred, y, err_func_name_);
-    
+  return DDiffErrFunc(pred, y, func_name_, output_func);
 }

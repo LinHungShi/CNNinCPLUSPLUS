@@ -10,13 +10,9 @@
 
 
 
-mat InitWeightFunction::operator()(int row, int col)
-{
-
-    if (init_method_name_ == "self-made") {
-        return custom_init_method_(row, col);
-    }
-    
-    return InitWeight(row, col, init_method_name_);
-    
+mat InitWeightFunction::operator()(int row, int col) {
+  if (method_name_ == kUserDefinedMethod) {
+      return custom_method_(row, col);
+  }
+  return InitWeight(row, col, method_name_);
 }

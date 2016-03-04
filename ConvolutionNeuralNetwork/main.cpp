@@ -29,25 +29,32 @@ int main(int argc, const char * argv[]) {
     string outfun = "softmax";
     string init_method = "randn";
     //string errfunc = "crossentropy";
-    int epoch = 1000;
-    
-    
-    HidActFunction hidact("tanh");
+    int epoch = 10;
+    bool is_hid = true;
+    bool not_hid = false;
+  
+    ActFunction hidact(actfun, is_hid);
     auto tanh = [](mat pre_act)->mat{return 1/(1 + exp(-pre_act));};
     auto diff_tanh = [](mat act)->mat{return 1 - pow(act, 2);};
-    HidActFunction hid_act_tanh(tanh, diff_tanh);
-    HidLayer hidlayer(nn[0], hid_act_tanh);
-    HidLayer hidlayer2(nn[1], hidact);
-    OutputFunction outact("softmax");
-    OutputLayer outlayer(classes, outact);
+    ActFunction hid_act_tanh(tanh, diff_tanh, is_hid);
+    HidLayer hidlayer(nn[0]);
+    HidLayer hidlayer2(nn[1]);
+    hidlayer.set_act_func(hidact);
+    hidlayer2.set_act_func(hid_act_tanh);
+  
+    ActFunction outact(outfun, not_hid);
+    OutputLayer outlayer(classes);
+    outlayer.set_act_func(outact);
+  
     ErrFunction errfunc("crossentropy");
-    NeuronNet NN(input, y, errfunc, alpha, epoch, "randn");
-    InitWeightFunction *w_init_func = new InitWeightFunction(init_method);
-    NN.set_w_init_func_(w_init_func);
-    NN.InsertLayer(hidlayer);
-    NN.InsertLayer(hidlayer2);
-    NN.InsertLayer(outlayer);
+    NeuronNet NN(alpha, epoch, input, y);
+    InitWeightFunction w_init_func(init_method);
+    NN.set_w_init_func(w_init_func);
+  NN.InsertHidLayer(std::move(hidlayer));
+  NN.InsertHidLayer(std::move(hidlayer2));
+  NN.set_output_layer(std::move(outlayer));
+  NN.set_err_func(errfunc);
     NN.InitAllLayerWeight(true);
-    cout << NN << endl;
+    //cout << NN << endl;
     NN.TrainNN();
 }

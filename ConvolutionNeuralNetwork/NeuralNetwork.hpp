@@ -10,89 +10,82 @@
 #define NeuralNetwork_hpp
 
 #include <stdio.h>
-#include "Supplement.hpp"
 #include "err_function.hpp"
+#include "HidLayer.hpp"
+#include "OutputLayer.hpp"
 #include "init_weight_function.hpp"
 class NeuronNet{
-
-public:
-    
-    vector<FullLayer*> layers_;
-    
-    ErrFunction err_func_;
-    
-    mat input_,
-        y_,
-        output_;
-    
-    double alpha_;
-    int epoch_;
-
-    
-    void FeedForward();
-    void BackProp();
-    InitWeightFunction *w_init_func_;
-    bool has_w_init_func_;
-    
-    
-
-    
-    /*NeuronNet(mat input,
-              mat y,
-              vector<int> num_neuron,
-              double alpha,
-              string act_func,
-              string out_func,
-              string err_func,
-              string init_method,
-              int batch = 1,
-              int epoch = 3);
-     */
-    NeuronNet(mat input,
-              mat y,
-              ErrFunction err_func,
-              double alpha,
-              int epoch,
-              string init_method):input_(input),
-                                  y_(y),
-                                  err_func_(err_func),
-                                  epoch_(epoch),
-                                  alpha_(alpha),
-                                  has_w_init_func_(false){};
-    ~NeuronNet()
-    {
-        
-        delete w_init_func_;
-    
+ private:
+  vector<HidLayer*> layers_;
+  OutputLayer *output_layer_;
+  ErrFunction *err_func_;
+  InitWeightFunction *w_init_func_;
+  mat input_, y_, output_;
+  double alpha_;
+  int epoch_;
+  bool has_w_init_func_;
+  vector<HidLayer*> get_layers() const;
+ 
+ public:
+  // Constructors
+  NeuronNet(double alpha, int epoch, mat const &input, mat const &y):
+    alpha_(alpha), epoch_(epoch), input_(input), y_(y) {};
+  
+  ~NeuronNet() {
+    delete output_layer_;
+    delete err_func_;
+    delete w_init_func_;
+    for(vector<HidLayer*>::iterator it=layers_.begin(); it!=layers_.end(); ++it) {
+      delete *it;
     }
-    
-    void InsertLayer(FullLayer &layer);
-    void InsertLayer(FullLayer &layer, int index);
-    void DeleteLastLayer();
-    void DeleteFirstLayer();
-    void DeleteLayer(int index);
-    void ClearLayers();
-    bool IsLayersEmpty();
-    int GetLayersSize();
+  }
+  
+  // Manipulators
+  
+  // Insertion and Deletion
+  
+  // Insert hidden layer to layers_. If not specify the index, insert to the last
+  void InsertHidLayer(HidLayer const&layer);
+  void InsertHidLayer(int index, HidLayer const&layer);
+  
+  // Delete hidden layer from layers_. If not specify the index, delete the last
+  void DeleteHidLayer();
+  void DeleteHidLayer(int index);
+  
+  // Initialize all layers' weights with w_init_func
+  void InitAllLayerWeight(bool update_all);
 
-    void set_w_init_func_(InitWeightFunction *w_init_func)
-    {
-        
-        w_init_func_ = w_init_func;
-        has_w_init_func_ = true;
-        
-    }
-    
-    void InitAllLayerWeight(bool update_all);
-    
-    void TrainNN();
-
-    bool CheckNNComplete();
-    bool StopNN(string message);
-
-    FullLayer get_layers_(int index){return *(layers_[index]);};
-    mat get_output_(){return output_;}
-    
-    friend ostream &operator<<(ostream &, NeuronNet &);
+  // Training functions
+  void TrainNN();
+  void FeedForward();
+  void BackProp();
+  
+  // Micellaneous
+  void ClearHidLayers();
+  bool IsNNComplete() const;
+  int GetLayersSize() const;
+  bool HasWinitFunc() const;
+  friend ostream &operator<<(ostream &, NeuronNet const&);
+  // Since hidden layers are in vector, there is no accessor to use. Use these
+  // two methods to get and set hidden layer
+  HidLayer GetHidLayer(int index);
+  void setHidLayer(HidLayer const&hid_layer, int index);
+  
+  // Accessors and Setters
+  InitWeightFunction get_w_init_func() const;
+  void set_w_init_func(InitWeightFunction const &w_init_func);
+  ErrFunction get_err_func() const;
+  void set_err_func(ErrFunction const &err_func);
+  OutputLayer get_output_layer() const;
+  void set_output_layer(OutputLayer const &output_layer);
+  mat get_output() const;
+  mat get_input() const;
+  void set_input(mat const &input);
+  mat get_y() const;
+  void set_y(mat const &y);
+  int get_epoch() const;
+  void set_epoch(int epoch);
+  double get_alpha() const;
+  void set_alpha(double alpha);
 };
 #endif /* NeuralNetwork_hpp */

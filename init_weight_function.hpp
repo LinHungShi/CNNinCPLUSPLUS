@@ -13,24 +13,42 @@
 #include <functional>
 #include <armadillo>
 #include <iostream>
-#include "default_weight_init_funcs.hpp"
+#include "inl_w_init_funcs.hpp"
+#include "const_value.hpp"
 using namespace std;
 using namespace arma;
 
 
 class InitWeightFunction{
-
-public:
-    
-    string init_method_name_;
-    function<mat(int, int)> custom_init_method_;
-    
-    InitWeightFunction(string init_method_name):init_method_name_(init_method_name){};
-    
-    InitWeightFunction(function<mat(int, int)> func):custom_init_method_(func),
-        init_method_name_("self-made"){};
-    
-    mat operator()(int row, int col);
-    
+ private:
+  string method_name_;
+  function<mat(int, int)> custom_method_;
+ 
+ public:
+  // Constructors
+  // User use default method to initialize weight
+  InitWeightFunction(string init_method_name):
+    method_name_(init_method_name),
+    custom_method_(nullptr) {};
+  
+  //User use customized function to initialize weight
+  InitWeightFunction(function<mat(int, int)> func):
+    custom_method_(func),
+    method_name_(kUserDefinedMethod){};
+  
+  // Manipulators
+  mat operator()(int row, int col);
+  
+  // Accessors and Setters
+  inline string get_method_name() { return method_name_; }
+  inline void set_method_name(string name) {
+    method_name_ = name;
+    custom_method_ = nullptr;
+  }
+  inline function<mat(int, int)> get_custom_method() { return custom_method_; }
+  inline void set_custom_method(function<mat(int, int)> custom_method) {
+    method_name_ = kUserDefinedMethod;
+    custom_method_ = custom_method;
+  }
 };
 #endif /* init_weight_function_hpp */

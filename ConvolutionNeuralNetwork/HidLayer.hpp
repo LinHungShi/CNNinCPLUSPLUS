@@ -11,36 +11,36 @@
 
 #include <stdio.h>
 #include "FullLayer.hpp"
-#include "hidden_act_function.hpp"
-#include "ActFuncOp.hpp"
+#include "inl_nn_funcs.hpp"
+#include "const_value.hpp"
 #include <iomanip>
 
-
 class HidLayer : public FullLayer{
-
-protected:
-    
-    bool UpdateDelta(mat next_layer_delta, mat next_layer_weight);
+ private:
+  bool UpdateDelta(mat const &next_layer_delta, mat const &next_layer_weight);
     
 public:
-    
-    HidActFunction act_func_;
-    
-    HidLayer(int num_neuron,
-             HidActFunction &act_func):act_func_(act_func),
-                                       FullLayer(
-                                       num_neuron,
-                                       "HidLayer"){};
-
-    bool UpdateParm(double alpha,
-                    mat next_layer_delta,
-                    mat next_layer_weight,
-                    mat input);
-    
-    bool UpdateOutput(mat input);
-    void set_act_func_(HidActFunction &act_func){act_func_ = act_func;}
-    
-    friend ostream &operator<<(ostream &stream, HidLayer &layer);
+  // Constructor
+  HidLayer(int num_neuron):FullLayer(num_neuron, kHidLayer){};
+  
+  ~HidLayer(){
+    cout << "call hidden layer destructor" << endl;
+    //delete act_func_;
+  }
+  // Manipulators
+  bool UpdateParm(double alpha,
+                  mat next_layer_delta,
+                  mat next_layer_weight,
+                  mat input);
+  
+  //HidLayer Printing Method
+  friend ostream &operator<<(ostream &stream, HidLayer const &layer);
+  
+  //Accessors and Setters
+  // act_func's Getter is defined in FullLayer
+  // User must set is_hid in act_func as true, otherwise refuse to set activation
+  // fucntion in hidden layer
+  void set_act_func(ActFunction const &act_func);
 };
 
 #endif /* HidLayer_hpp */
