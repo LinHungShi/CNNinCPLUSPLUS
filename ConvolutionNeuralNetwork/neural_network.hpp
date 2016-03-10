@@ -11,32 +11,28 @@
 
 #include <stdio.h>
 #include "err_function.hpp"
-#include "HidLayer.hpp"
-#include "OutputLayer.hpp"
+#include "hidden_layer.hpp"
+#include "output_layer.hpp"
+#include "input_layer.hpp"
 #include "init_weight_function.hpp"
 class NeuronNet{
  private:
-  vector<HidLayer*> layers_;
-  OutputLayer *output_layer_;
+  vector<BaseLayer*> layers_;
   ErrFunction *err_func_;
   InitWeightFunction *w_init_func_;
-  mat input_, y_, output_;
-  double alpha_;
-  int epoch_;
+  mat y_;
   bool has_w_init_func_;
   vector<HidLayer*> get_layers() const;
  
  public:
   // Constructors
-  NeuronNet(double alpha, int epoch, mat const &input, mat const &y):
-    alpha_(alpha), epoch_(epoch), input_(input), y_(y) {};
+  NeuronNet(mat const &input, mat const &y);
   
   ~NeuronNet() {
-    delete output_layer_;
     delete err_func_;
     delete w_init_func_;
-    for(vector<HidLayer*>::iterator it=layers_.begin(); it!=layers_.end(); ++it) {
-      delete *it;
+    for (BaseLayer* ptr : layers_) {
+      delete ptr;
     }
   }
   
@@ -45,7 +41,7 @@ class NeuronNet{
   // Insertion and Deletion
   
   // Insert hidden layer to layers_. If not specify the index, insert to the last
-  void InsertHidLayer(HidLayer const&layer);
+  void InsertLayer(BaseLayer &&layer);
   void InsertHidLayer(int index, HidLayer const&layer);
   
   // Delete hidden layer from layers_. If not specify the index, delete the last

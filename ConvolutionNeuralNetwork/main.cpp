@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <armadillo>
-#include "NeuralNetwork.hpp"
+#include "neural_network.hpp"
 
 int main(int argc, const char * argv[]) {
   
@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     string outfun = "softmax";
     string init_method = "randn";
     //string errfunc = "crossentropy";
-    int epoch = 10;
+    int epoch = 1000;
     bool is_hid = true;
     bool not_hid = false;
   
@@ -55,6 +55,6 @@ int main(int argc, const char * argv[]) {
   NN.set_output_layer(std::move(outlayer));
   NN.set_err_func(errfunc);
     NN.InitAllLayerWeight(true);
-    //cout << NN << endl;
+    cout << NN << endl;
     NN.TrainNN();
 }

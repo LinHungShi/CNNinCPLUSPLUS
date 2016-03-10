@@ -17,8 +17,12 @@ inline void printValue(T t){ std::cout << t << std::endl; }
 const int kLineWidth = 5;
 const int kPrecision = 4;
 const int kEpsilon = 0.01;
+double g_alpha = 0.1;
+int g_epoch = 10;
 const std::string kUserDefinedMethod = "user_defined";
 const std::string kHidLayer = "Hidlayer";
 const std::string kOutputLayer = "OutputLayer";
+const std::string kInputLayer = "InputLayer";
+const std::string kNormLayer = "kNormLayer";
 
 #endif /* const_value_hpp */

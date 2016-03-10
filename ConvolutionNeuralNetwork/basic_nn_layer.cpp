@@ -1,73 +1,74 @@
 //
-//  FullLayer.cpp
+//  basic_nn_layer.cpp
 //  ConvolutionNeuralNetwork
 //
 //  Created by Lin Hung-Shi on 11/19/15.
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
 
-#include "FullLayer.hpp"
+#include "basic_nn_layer.hpp"
 
 
-void FullLayer::UpdateWeightGradient(mat input) {
+void BasicNNLayer::UpdateWeightGradient(mat input) {
   gradient_ = input.t() * delta_;
 }
 
-void FullLayer::UpdateWeight(double alpha) {
+void BasicNNLayer::UpdateWeight(double alpha) {
   weight_ = GradientDescent(alpha, weight_, gradient_);
 }
 
-bool FullLayer::UpdateOutput(mat input) {
+bool BasicNNLayer::UpdateOutput(mat input) {
   mat pre_act = input * weight_;
   
   output_ = act_func_->ComputeActFunc(pre_act);
   return true;
 }
 
-void FullLayer::DeleteWinitFunc() {
+void BasicNNLayer::DeleteWinitFunc() {
   w_init_func_ = nullptr;
   has_w_init_func_ = false;
 }
 
-void FullLayer::DeleteActFunc() {
+void BasicNNLayer::DeleteActFunc() {
   act_func_ = nullptr;
   has_act_func_ = false;
 }
 
-void FullLayer::InitWeight(int inp_dim) {
+void BasicNNLayer::InitWeight(int inp_dim) {
   weight_ = (*w_init_func_)(inp_dim, num_neuron_);
   is_w_init_ = true;
 }
 
-InitWeightFunction FullLayer::get_w_init_func() const {
+InitWeightFunction BasicNNLayer::get_w_init_func() const {
   return  *w_init_func_;
 }
 
-void FullLayer::set_w_init_func( InitWeightFunction const&w_init_func) {
+void BasicNNLayer::set_w_init_func( InitWeightFunction const&w_init_func) {
   w_init_func_ = new InitWeightFunction(w_init_func);
+  has_w_init_func_ = true;
   
 }
 
-bool FullLayer::get_is_weight_init() const {
+bool BasicNNLayer::get_is_weight_init() const {
   return is_w_init_;
 }
 
-bool FullLayer::get_has_w_init_func() const {
+bool BasicNNLayer::get_has_w_init_func() const {
   return has_w_init_func_;
 }
 
-bool FullLayer::get_has_act_func() const {
+bool BasicNNLayer::get_has_act_func() const {
   return has_act_func_;
 }
 
-mat FullLayer::get_weight() const {
+mat BasicNNLayer::get_weight() const {
   return weight_;
 }
 
-mat FullLayer::get_gradient() const {
+mat BasicNNLayer::get_gradient() const {
   return gradient_;
 }
 
-ActFunction FullLayer::get_act_func() const {
+ActFunction BasicNNLayer::get_act_func() const {
   return *act_func_;
 }

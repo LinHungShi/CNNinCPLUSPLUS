@@ -1,13 +1,13 @@
 //
-//  FullLayer.hpp
+//  basic_nn_layer.hpp
 //  ConvolutionNeuralNetwork
 //
 //  Created by Lin Hung-Shi on 11/19/15.
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
 
-#ifndef FullLayer_hpp
-#define FullLayer_hpp
+#ifndef basic_nn_layer_hpp
+#define basic_nn_layer_hpp
 
 #include <stdio.h>
 #include "base_layer.hpp"
@@ -17,7 +17,7 @@
 #include "init_weight_function.hpp"
 
 
-class FullLayer : public BaseLayer{
+class BasicNNLayer : public BaseLayer{
  protected:
   mat weight_, gradient_;
   bool is_w_init_;
@@ -28,7 +28,7 @@ class FullLayer : public BaseLayer{
   
  public:
   // Constructor
-  FullLayer(int num_neuron, string name):
+  BasicNNLayer(int num_neuron, string name):
     BaseLayer(num_neuron, name),
     is_w_init_(false),
     has_w_init_func_(false),
@@ -37,10 +37,11 @@ class FullLayer : public BaseLayer{
     act_func_(nullptr) {};
 
   // Copy Constructor
-  FullLayer(FullLayer const &copied): BaseLayer(copied) {
+  BasicNNLayer(BasicNNLayer const &copied): BaseLayer(copied) {
     weight_ = copied.get_weight();
     gradient_ = copied.get_gradient();
     has_w_init_func_ = copied.get_has_w_init_func();
+    has_act_func_ = copied.get_has_act_func();
     if(copied.get_has_w_init_func()) {
       InitWeightFunction w_init_func = copied.get_w_init_func();
       w_init_func_ = new InitWeightFunction(w_init_func);
@@ -52,10 +53,14 @@ class FullLayer : public BaseLayer{
     }
   }
   // Destructor
-  ~FullLayer() {
+  ~BasicNNLayer() {
     cout << "call Full layer destructor ~" << endl;
-    delete w_init_func_;
-    delete act_func_;
+    if(has_w_init_func_){
+      delete w_init_func_;
+    }
+    if(has_act_func_){
+      delete act_func_;
+    }
   }
   
   // Manipulators
@@ -79,6 +84,6 @@ class FullLayer : public BaseLayer{
 
 
 
-#endif /* FullLayer_hpp */
+#endif /* basic_nn_layer_hpp */
 
 

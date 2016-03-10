@@ -14,10 +14,10 @@
 #include <iostream>
 #include <map>
 
+class ActFunction;
+
 using namespace arma;
 using namespace std;
-
-class ActFunction;
 
 typedef mat (*FnPtr)(mat const &input);
 typedef double (*ErrFuncPtr)(mat const &pred, mat const &y);
@@ -34,7 +34,6 @@ static const map<string, FnPtr> diff_act_func_look_up_table = CreateDiffActFuncL
 static const map<string, FnPtr> output_func_Look_up_table = CreateOutputFuncLookUpTable();
 static const map<string, ErrFuncPtr> err_func_Look_up_table = CreateErrFuncLookUpTable();
 static const map<string, DiffErrFuncPtr> diff_err_func_look_up_table =CreateDiffErrFuncLookUpTable();
-
 
 // Activation functions for hidden layer
 static inline mat Sigmoid(mat const &pre_act) {

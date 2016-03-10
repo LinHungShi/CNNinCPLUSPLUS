@@ -6,22 +6,22 @@
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
 
-#ifndef OutputLayer_hpp
-#define OutputLayer_hpp
+#ifndef output_layer_hpp
+#define output_layer_hpp
 
 #include <stdio.h>
-#include "FullLayer.hpp"
+#include "basic_nn_layer.hpp"
 #include "err_function.hpp"
 #include <iostream>
 #include <iomanip>
 
-class OutputLayer : public FullLayer{
+class OutputLayer : public BasicNNLayer{
  private:
   bool UpdateDelta(mat const &y, ErrFunction const &err_func);
     
  public:
   // Constructors
-  OutputLayer(int num_neuron): FullLayer(num_neuron, kOutputLayer) {};
+  OutputLayer(int num_neuron): BasicNNLayer(num_neuron, kOutputLayer) {};
   
   ~OutputLayer(){
     cout << "call output layer destructor" << endl;

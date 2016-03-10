@@ -15,10 +15,12 @@
 		E89177DD1C7C4C65002E0319 /* inl_w_init_funcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89177DB1C7C4C65002E0319 /* inl_w_init_funcs.cpp */; };
 		E89385BD1BFCC9A70012FAAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385BC1BFCC9A70012FAAA /* main.cpp */; };
 		E89385C51BFCC9B90012FAAA /* base_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C31BFCC9B90012FAAA /* base_layer.cpp */; };
-		E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C91BFE20DD0012FAAA /* FullLayer.cpp */; };
-		E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385E81C01C6DA0012FAAA /* HidLayer.cpp */; };
-		E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385EB1C0226720012FAAA /* OutputLayer.cpp */; };
-		E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8F871571C5B5668009839BD /* NeuralNetwork.cpp */; };
+		E89385CB1BFE20DD0012FAAA /* basic_nn_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385C91BFE20DD0012FAAA /* basic_nn_layer.cpp */; };
+		E89385EA1C01C6DA0012FAAA /* hidden_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385E81C01C6DA0012FAAA /* hidden_layer.cpp */; };
+		E89385ED1C0226720012FAAA /* output_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E89385EB1C0226720012FAAA /* output_layer.cpp */; };
+		E8A7DE581C900F590091B4E5 /* normalization_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8A7DE561C900F590091B4E5 /* normalization_layer.cpp */; };
+		E8A7DE5B1C914AE40091B4E5 /* input_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8A7DE591C914AE40091B4E5 /* input_layer.cpp */; };
+		E8F871591C5B5668009839BD /* neural_network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8F871571C5B5668009839BD /* neural_network.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,14 +52,18 @@
 		E89385BC1BFCC9A70012FAAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E89385C31BFCC9B90012FAAA /* base_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base_layer.cpp; sourceTree = "<group>"; };
 		E89385C41BFCC9B90012FAAA /* base_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = base_layer.hpp; sourceTree = "<group>"; };
-		E89385C91BFE20DD0012FAAA /* FullLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FullLayer.cpp; sourceTree = "<group>"; };
-		E89385CA1BFE20DD0012FAAA /* FullLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = FullLayer.hpp; sourceTree = "<group>"; };
-		E89385E81C01C6DA0012FAAA /* HidLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HidLayer.cpp; sourceTree = "<group>"; };
-		E89385E91C01C6DA0012FAAA /* HidLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HidLayer.hpp; sourceTree = "<group>"; };
-		E89385EB1C0226720012FAAA /* OutputLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OutputLayer.cpp; sourceTree = "<group>"; };
-		E89385EC1C0226720012FAAA /* OutputLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OutputLayer.hpp; sourceTree = "<group>"; };
-		E8F871571C5B5668009839BD /* NeuralNetwork.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NeuralNetwork.cpp; sourceTree = "<group>"; };
-		E8F871581C5B5668009839BD /* NeuralNetwork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NeuralNetwork.hpp; sourceTree = "<group>"; };
+		E89385C91BFE20DD0012FAAA /* basic_nn_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = basic_nn_layer.cpp; sourceTree = "<group>"; };
+		E89385CA1BFE20DD0012FAAA /* basic_nn_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = basic_nn_layer.hpp; sourceTree = "<group>"; };
+		E89385E81C01C6DA0012FAAA /* hidden_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hidden_layer.cpp; sourceTree = "<group>"; };
+		E89385E91C01C6DA0012FAAA /* hidden_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hidden_layer.hpp; sourceTree = "<group>"; };
+		E89385EB1C0226720012FAAA /* output_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = output_layer.cpp; sourceTree = "<group>"; };
+		E89385EC1C0226720012FAAA /* output_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = output_layer.hpp; sourceTree = "<group>"; };
+		E8A7DE561C900F590091B4E5 /* normalization_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = normalization_layer.cpp; sourceTree = "<group>"; };
+		E8A7DE571C900F590091B4E5 /* normalization_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = normalization_layer.hpp; sourceTree = "<group>"; };
+		E8A7DE591C914AE40091B4E5 /* input_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = input_layer.cpp; sourceTree = "<group>"; };
+		E8A7DE5A1C914AE40091B4E5 /* input_layer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = input_layer.hpp; sourceTree = "<group>"; };
+		E8F871571C5B5668009839BD /* neural_network.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = neural_network.cpp; sourceTree = "<group>"; };
+		E8F871581C5B5668009839BD /* neural_network.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = neural_network.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,30 +97,66 @@
 			isa = PBXGroup;
 			children = (
 				E89385BC1BFCC9A70012FAAA /* main.cpp */,
-				E8F871571C5B5668009839BD /* NeuralNetwork.cpp */,
-				E8F871581C5B5668009839BD /* NeuralNetwork.hpp */,
+				E8F871571C5B5668009839BD /* neural_network.cpp */,
+				E8F871581C5B5668009839BD /* neural_network.hpp */,
+				E8A7DE501C9008700091B4E5 /* inline_functions */,
+				E8A7DE4F1C90084C0091B4E5 /* layers */,
+				E8A7DE511C9008A10091B4E5 /* constant_and misellaneous */,
+				E8A7DE521C9008CF0091B4E5 /* function_classes */,
+			);
+			path = ConvolutionNeuralNetwork;
+			sourceTree = "<group>";
+		};
+		E8A7DE4F1C90084C0091B4E5 /* layers */ = {
+			isa = PBXGroup;
+			children = (
 				E89385C31BFCC9B90012FAAA /* base_layer.cpp */,
 				E89385C41BFCC9B90012FAAA /* base_layer.hpp */,
-				E89177AA1C72A09D002E0319 /* inl_nn_funcs.cpp */,
-				E89177AB1C72A09D002E0319 /* inl_nn_funcs.hpp */,
-				E89385C91BFE20DD0012FAAA /* FullLayer.cpp */,
-				E89385CA1BFE20DD0012FAAA /* FullLayer.hpp */,
-				E89385E81C01C6DA0012FAAA /* HidLayer.cpp */,
-				E89385E91C01C6DA0012FAAA /* HidLayer.hpp */,
-				E89177CF1C7AF6A6002E0319 /* act_function.cpp */,
-				E86C2F861C8978AD00F6360F /* act_function.hpp */,
-				E89177B31C7A1697002E0319 /* err_function.cpp */,
-				E89177B41C7A1697002E0319 /* err_function.hpp */,
-				E89385EB1C0226720012FAAA /* OutputLayer.cpp */,
-				E89385EC1C0226720012FAAA /* OutputLayer.hpp */,
-				E89177D81C7C47A4002E0319 /* init_weight_function.cpp */,
-				E89177D91C7C47A4002E0319 /* init_weight_function.hpp */,
+				E8A7DE591C914AE40091B4E5 /* input_layer.cpp */,
+				E8A7DE5A1C914AE40091B4E5 /* input_layer.hpp */,
+				E89385C91BFE20DD0012FAAA /* basic_nn_layer.cpp */,
+				E89385CA1BFE20DD0012FAAA /* basic_nn_layer.hpp */,
+				E89385E81C01C6DA0012FAAA /* hidden_layer.cpp */,
+				E89385E91C01C6DA0012FAAA /* hidden_layer.hpp */,
+				E89385EB1C0226720012FAAA /* output_layer.cpp */,
+				E89385EC1C0226720012FAAA /* output_layer.hpp */,
+				E8A7DE561C900F590091B4E5 /* normalization_layer.cpp */,
+				E8A7DE571C900F590091B4E5 /* normalization_layer.hpp */,
+			);
+			name = layers;
+			sourceTree = "<group>";
+		};
+		E8A7DE501C9008700091B4E5 /* inline_functions */ = {
+			isa = PBXGroup;
+			children = (
 				E89177DB1C7C4C65002E0319 /* inl_w_init_funcs.cpp */,
 				E89177DC1C7C4C65002E0319 /* inl_w_init_funcs.hpp */,
+				E89177AA1C72A09D002E0319 /* inl_nn_funcs.cpp */,
+				E89177AB1C72A09D002E0319 /* inl_nn_funcs.hpp */,
+			);
+			name = inline_functions;
+			sourceTree = "<group>";
+		};
+		E8A7DE511C9008A10091B4E5 /* constant_and misellaneous */ = {
+			isa = PBXGroup;
+			children = (
 				E86C2F821C856CDC00F6360F /* const_value.cpp */,
 				E86C2F831C856CDC00F6360F /* const_value.hpp */,
 			);
-			path = ConvolutionNeuralNetwork;
+			name = "constant_and misellaneous";
+			sourceTree = "<group>";
+		};
+		E8A7DE521C9008CF0091B4E5 /* function_classes */ = {
+			isa = PBXGroup;
+			children = (
+				E89177B41C7A1697002E0319 /* err_function.hpp */,
+				E89177B31C7A1697002E0319 /* err_function.cpp */,
+				E89177CF1C7AF6A6002E0319 /* act_function.cpp */,
+				E86C2F861C8978AD00F6360F /* act_function.hpp */,
+				E89177D81C7C47A4002E0319 /* init_weight_function.cpp */,
+				E89177D91C7C47A4002E0319 /* init_weight_function.hpp */,
+			);
+			name = function_classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,13 +220,15 @@
 				E89177D11C7AF6A6002E0319 /* act_function.cpp in Sources */,
 				E89385C51BFCC9B90012FAAA /* base_layer.cpp in Sources */,
 				E89177B51C7A1697002E0319 /* err_function.cpp in Sources */,
+				E8A7DE581C900F590091B4E5 /* normalization_layer.cpp in Sources */,
+				E8A7DE5B1C914AE40091B4E5 /* input_layer.cpp in Sources */,
 				E89177DD1C7C4C65002E0319 /* inl_w_init_funcs.cpp in Sources */,
 				E89177DA1C7C47A4002E0319 /* init_weight_function.cpp in Sources */,
-				E8F871591C5B5668009839BD /* NeuralNetwork.cpp in Sources */,
+				E8F871591C5B5668009839BD /* neural_network.cpp in Sources */,
 				E86C2F841C856CDC00F6360F /* const_value.cpp in Sources */,
-				E89385ED1C0226720012FAAA /* OutputLayer.cpp in Sources */,
-				E89385CB1BFE20DD0012FAAA /* FullLayer.cpp in Sources */,
-				E89385EA1C01C6DA0012FAAA /* HidLayer.cpp in Sources */,
+				E89385ED1C0226720012FAAA /* output_layer.cpp in Sources */,
+				E89385CB1BFE20DD0012FAAA /* basic_nn_layer.cpp in Sources */,
+				E89385EA1C01C6DA0012FAAA /* hidden_layer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

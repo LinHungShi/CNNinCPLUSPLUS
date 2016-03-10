@@ -6,7 +6,7 @@
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
 
-#include "OutputLayer.hpp"
+#include "output_layer.hpp"
 
 
 //bool OutputLayer::updatePar(double alpha, Layer const *n_layer, Layer const *p_layer){

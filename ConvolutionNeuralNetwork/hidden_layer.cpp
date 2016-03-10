@@ -6,7 +6,7 @@
 //  Copyright © 2015 Lin Hung-Shi. All rights reserved.
 //
 
-#include "HidLayer.hpp"
+#include "hidden_layer.hpp"
 
 bool HidLayer::UpdateDelta(mat const &next_layer_delta, mat const &next_layer_weight) {
   

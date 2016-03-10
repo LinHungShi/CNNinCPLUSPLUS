@@ -6,11 +6,18 @@
 //  Copyright © 2016 Lin Hung-Shi. All rights reserved.
 //
 
-#include "NeuralNetwork.hpp"
+#include "neural_network.hpp"
 
-void NeuronNet::InsertHidLayer(HidLayer const&layer) {
-  HidLayer  *ptr = new HidLayer(layer);
+NeuronNet::NeuronNet(mat const &input, mat const &y) {
+  InputLayer *ptr = new InputLayer(input);
   layers_.push_back(ptr);
+  y_ = y;
+}
+
+void NeuronNet::InsertLayer(BaseLayer &&layer) {
+  
+  
+  layers_.push_back(&layer);
     
 }
 
@@ -201,7 +208,8 @@ ostream &operator<<(ostream &stream, NeuronNet const &nnet) {
   //vector<HidLayer*>::iterator it = nnet.get_layers().begin();
   //int num = 0;
   stream << "Output Layer: " << setw(width) << endl;
-  stream << nnet.get_output_layer() << endl;
+
+  stream << *nnet.output_layer_ << endl;
   
   /*for(;it!=nnet.layers_.end();++it) {
     stream << " Hidden Layer: " << setw(width) << num << endl;
